@@ -11,6 +11,11 @@ on: workflow_dispatch
 #       - main
 #     paths:
 #       - terraform/**
+env:
+    ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
+    ARM_CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
+    ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+    ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
 
 jobs:
    terraform:
@@ -18,7 +23,7 @@ jobs:
      runs-on: ubuntu-latest
      defaults:
        run:
-         shell: bash
+         #shell: bash
          working-directory: ./Terraform
 
      steps:
@@ -26,16 +31,16 @@ jobs:
         - name: Checkout source code
           uses: actions/checkout@v4
 
-        - name: Log in with Azure
-          uses: azure/login@v1
-          with:
-            creds: '${{ secrets.AZURE_CREDENTIALS }}'
+        # - name: Log in with Azure
+        #   uses: azure/login@v1
+        #   with:
+        #     creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
-        - name: Message after Login
-          run: echo Hello, world! Logged in to Azure
+        # - name: Message after Login
+        #   run: echo Hello, world! Logged in to Azure
 
         - name: Setup Terraform with specified version on the runner
-          uses: hashicorp/setup-terraform@v2
+          uses: hashicorp/setup-terraform@v3
 
         - name: Terraform init
           id: init
