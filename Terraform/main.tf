@@ -10,10 +10,6 @@ terraform {
   required_version = ">= 1.1.0"
 
   backend "azurerm" {
-    resource_group_name  = "tfaksrg"
-    storage_account_name = "tfaksstg"
-    container_name       = "tfaksstgcontainer"
-    key                  = "demo.terraform.tfstate"
   }
 
 }
