@@ -30,7 +30,7 @@ env:
 
 jobs:
     terraform:
-      name: "Apply terraform code changes"
+      name: "Create the infra"
       runs-on: ubuntu-latest
       environment: ${{ inputs.ENVIRONMENT }}
       defaults:

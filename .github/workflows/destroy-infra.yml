@@ -26,10 +26,11 @@ env:
     TF_BACKEND_STORAGE_ACCOUNT: "${{ secrets.AZURE_TRF_STORAGE_ACCOUNT }}"
     TF_BACKEND_CONTAINER_NAME: "${{ secrets.AZURE_TRF_CONTAINER_NAME }}"
     TF_BACKEND_KEY: "${{ secrets.AZURE_TRF_KEY_TFSTATE }}"
+    AZURE_RSG: "${{ vars.AZURE_RSG }}"
 
 jobs:
     terraform:
-      name: "Apply terraform code changes"
+      name: "Destroy the infra"
       runs-on: ubuntu-latest
       environment: ${{ inputs.ENVIRONMENT }}
       defaults:
@@ -64,7 +65,7 @@ jobs:
 
         - name: Terraform plan
           id: terra_plan
-          run: terraform plan -no-color -input=false -destroy -out planfile
+          run: terraform plan -var=resource_group_name="${{ env.AZURE_RSG }}" -no-color -input=false -destroy -out planfile
           continue-on-error: true
 
         - name: Terraform plan status
