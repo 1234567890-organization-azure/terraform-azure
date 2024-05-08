@@ -25,4 +25,5 @@ jobs:
           id: input_print
           run: |
             echo "Test Input : ${{ inputs.TESTINPUT }}"
+            echo "Environment Used : ${{ inputs.ENVIRONMENT }}"
             echo "Sample Variable : ${{ vars.SAMPLE_VARIABLE }}"
