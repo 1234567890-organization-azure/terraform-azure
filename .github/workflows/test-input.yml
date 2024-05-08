@@ -16,12 +16,8 @@ jobs:
       name: "Apply terraform code changes"
       runs-on: ubuntu-latest
       # environment: ${{ inputs.ENVIRONMENT }}
-      defaults:
-        run:
-          shell: bash
-          
+      
       steps:
-
         - name: Checkout source code
           uses: actions/checkout@v4
 
