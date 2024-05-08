@@ -2,14 +2,10 @@ name: "Create Infra"
 on:
   workflow_dispatch:
     inputs:
-      # ENVIRONMENT:
-      #   description: 'A GitHub Environment to pull action secrets from'
-      #   required: true
-      #   type: environment
-      TESTINPUT:
-        description: 'Sample Input Test Variable'
+      ENVIRONMENT:
+        description: 'A GitHub Environment to pull action secrets from'
         required: true
-        type: string
+        type: environment
 # on:
 #   push:
 #     branches:
@@ -35,7 +31,7 @@ jobs:
     terraform:
       name: "Apply terraform code changes"
       runs-on: ubuntu-latest
-      # environment: ${{ inputs.ENVIRONMENT }}
+      environment: ${{ inputs.ENVIRONMENT }}
       defaults:
         run:
           #shell: bash
@@ -46,21 +42,14 @@ jobs:
         - name: Checkout source code
           uses: actions/checkout@v4
 
-        # - name: Log in with Azure
-        #   uses: azure/login@v1
-        #   with:
-        #     creds: '${{ secrets.AZURE_CREDENTIALS }}'
-
-        # - name: Message after Login
-        #   run: echo Hello, world! Logged in to Azure
-
         - name: Setup Terraform with specified version on the runner
           uses: hashicorp/setup-terraform@v3
 
         - name: Print Input Variables
-          id: print
-          run: echo "Test Input : " ${{ inputs.TESTINPUT }}
-
+          id: input_print
+          run: |
+            echo "Environment Used : ${{ inputs.ENVIRONMENT }}"
+          
         - name: Terraform init
           id: init
           run: terraform init -backend-config=resource_group_name="${{ env.TF_BACKEND_RESOURCE_GRP }}" -backend-config=storage_account_name="${{ env.TF_BACKEND_STORAGE_ACCOUNT }}" -backend-config=container_name="${{ env.TF_BACKEND_CONTAINER_NAME }}" -backend-config=key="${{ env.TF_BACKEND_KEY }}"
