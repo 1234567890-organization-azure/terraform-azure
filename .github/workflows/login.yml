@@ -1,4 +1,4 @@
-name: AzureLoginSample
+name: Azure Login
 on:
   workflow_dispatch:
     inputs:
@@ -10,8 +10,10 @@ env:
     ARM_CREDENTIALS: "${{ secrets.AZURE_CREDENTIALS }}"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  login:
+    name: "Login to Azure"
+      runs-on: ubuntu-latest
+      environment: ${{ inputs.ENVIRONMENT }}
 
     steps:
       - name: Checkout source code
