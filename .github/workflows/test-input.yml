@@ -1,14 +1,15 @@
 name: "Test Input"
-on: workflow_dispatch
-  inputs:
-    # ENVIRONMENT:
-    #   description: 'A GitHub Environment to pull action secrets from'
-    #   required: true
-    #   type: environment
-    TESTINPUT:
-      description: 'Sample Input Test Variable'
-      required: true
-      type: string
+on: 
+  workflow_dispatchs:
+    inputs:
+      # ENVIRONMENT:
+      #   description: 'A GitHub Environment to pull action secrets from'
+      #   required: true
+      #   type: environment
+      TESTINPUT:
+        description: 'Sample Input Test Variable'
+        required: true
+        type: string
 
 jobs:
     terraform:
