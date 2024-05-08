@@ -1,0 +1,29 @@
+name: "Create Infra"
+on: workflow_dispatch
+  inputs:
+    # ENVIRONMENT:
+    #   description: 'A GitHub Environment to pull action secrets from'
+    #   required: true
+    #   type: environment
+    TESTINPUT:
+      description: 'Sample Input Test Variable'
+      required: true
+      type: string
+
+jobs:
+    terraform:
+      name: "Apply terraform code changes"
+      runs-on: ubuntu-latest
+      # environment: ${{ inputs.ENVIRONMENT }}
+      defaults:
+        run:
+          shell: bash
+          
+      steps:
+
+        - name: Checkout source code
+          uses: actions/checkout@v4
+
+        - name: Print Input Variables
+          id: print
+          run: echo "Test Input : " ${{ inputs.TESTINPUT }}
