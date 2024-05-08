@@ -1,6 +1,6 @@
 name: "Test Input"
 on: 
-  workflow_dispatchs:
+  workflow_dispatch:
     inputs:
       # ENVIRONMENT:
       #   description: 'A GitHub Environment to pull action secrets from'
