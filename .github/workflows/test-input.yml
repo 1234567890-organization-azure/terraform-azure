@@ -2,10 +2,10 @@ name: "Test Input"
 on: 
   workflow_dispatch:
     inputs:
-      # ENVIRONMENT:
-      #   description: 'A GitHub Environment to pull action secrets from'
-      #   required: true
-      #   type: environment
+      ENVIRONMENT:
+        description: 'A GitHub Environment to pull action secrets from'
+        required: true
+        type: environment
       TESTINPUT:
         description: 'Sample Input Test Variable'
         required: true
@@ -15,7 +15,7 @@ jobs:
     terraform:
       name: "Apply terraform code changes"
       runs-on: ubuntu-latest
-      # environment: ${{ inputs.ENVIRONMENT }}
+      environment: ${{ inputs.ENVIRONMENT }}
       
       steps:
         - name: Checkout source code
