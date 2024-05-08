@@ -25,3 +25,4 @@ jobs:
           id: input_print
           run: |
             echo "Test Input : ${{ inputs.TESTINPUT }}"
+            echo "Sample Variable : ${{ vars.SAMPLE_VARIABLE }}"
