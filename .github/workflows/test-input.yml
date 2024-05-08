@@ -1,4 +1,4 @@
-name: "Create Infra"
+name: "Test Input"
 on: workflow_dispatch
   inputs:
     # ENVIRONMENT:
