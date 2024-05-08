@@ -19,6 +19,10 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "myTestTFResourceGroup"
+  name     = var.resource_group_name
   location = "centralindia"
+}
+
+variable "resource_group_name" {
+  description = "Azure Resource Group Name"
 }
