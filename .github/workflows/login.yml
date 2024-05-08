@@ -10,7 +10,7 @@ env:
     ARM_CREDENTIALS: "${{ secrets.AZURE_CREDENTIALS }}"
 
 jobs:
-  login:
+  loginToAzure:
     name: "Login to Azure"
       runs-on: ubuntu-latest
       environment: ${{ inputs.ENVIRONMENT }}
