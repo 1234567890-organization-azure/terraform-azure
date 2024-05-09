@@ -16,7 +16,10 @@ env:
     TF_BACKEND_CONTAINER_NAME: "${{ secrets.AZURE_TRF_CONTAINER_NAME }}"
     TF_BACKEND_KEY: "${{ secrets.AZURE_TRF_KEY_TFSTATE }}"
     AZURE_RSG: "${{ vars.AZURE_RSG }}"
-
+concurrency:
+  group: ${{ github.workflow }}-${{ inputs.ENVIRONMENT }}
+  cancel-in-progress: true
+  
 jobs:
     terraform:
       name: "Destroy the infra"
