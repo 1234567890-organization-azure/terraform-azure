@@ -6,17 +6,6 @@ on:
         description: 'A GitHub Environment to pull action secrets from'
         required: true
         type: environment
-# on:
-#   push:
-#     branches:
-#       - stage
-#     paths:  
-#       - terraform/**
-#   pull_request:
-#     branches:
-#       - main
-#     paths:
-#       - terraform/**
 env:
     ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
     ARM_CLIENT_SECRET: "${{ secrets.AZURE_CLIENT_SECRET }}"
